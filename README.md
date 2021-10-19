@@ -17,7 +17,7 @@ Vytvořte rozhraní REST API pomocí ASP.NET Core.
 
 3.5. GET Employees (vrací seznam zaměstnanců, zde implementujte možnost řazení podle datumu narození a příjmení)
 
-5. kód prosím zdokumentujte (funkce, parametry, proměnné)
+4. kód prosím zdokumentujte (funkce, parametry, proměnné)
 
 Příklad hodnoty pro GET Employees/1
 {
