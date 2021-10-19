@@ -25,7 +25,7 @@ namespace EmployeesAPI.Controllers
 			return await _context.employees.OrderBy(d => d.dateOfBirth).OrderBy(s => s.surname).ToListAsync();
 		}
 
-		// GET: /Employees/5
+		// GET: /Employees/{id}
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Employee>> GetEmployee(int id)
 		{
@@ -39,7 +39,7 @@ namespace EmployeesAPI.Controllers
 			return employee;
 		}
 
-		// PUT: /Employees/Update/5
+		// PUT: /Employees/Update/{id}
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPut("/Update/{id}")]
 		public async Task<IActionResult> PutEmployee(int id, Employee employee)
@@ -81,7 +81,7 @@ namespace EmployeesAPI.Controllers
 			return CreatedAtAction("GetEmployee", new { id = employee.id }, employee);
 		}
 
-		// DELETE: /Employees/Delete/5
+		// DELETE: /Employees/Delete/{id}
 		[HttpDelete("/Delete/{id}")]
 		public async Task<IActionResult> DeleteEmployee(int id)
 		{
