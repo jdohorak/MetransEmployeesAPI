@@ -6,10 +6,15 @@ Vytvořte rozhraní REST API pomocí ASP.NET Core.
 2. do projektu přidejte tabulku zaměstnanci (Employees)
 
 3. nad tabulkou vytvořte CRUD operace (vytvoření nového záznamu, čtení, editaci, smazání záznamu)
+
 3.1. GET Employees/{id}
+
 3.2. POST Employees/Create
+
 3.3. PUT Employees/Update
+
 3.4. DELETE Employees/Delete
+
 3.5. GET Employees (vrací seznam zaměstnanců, zde implementujte možnost řazení podle datumu narození a příjmení)
 
 5. kód prosím zdokumentujte (funkce, parametry, proměnné)
