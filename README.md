@@ -1,6 +1,8 @@
 Vytvořte rozhraní REST API pomocí ASP.NET Core. 
 1. v řešení použijte komponenty
+
 1.1. Microsoft.EntityFrameworkCore.InMemory
+
 1.2. Swagger UI (Swashbuckle.Core)
 
 2. do projektu přidejte tabulku zaměstnanci (Employees)
