@@ -22,7 +22,8 @@ namespace EmployeesAPI.Controllers
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Employee>>> Getemployees()
 		{
-			return await _context.employees.OrderBy(d => d.dateOfBirth).OrderBy(s => s.surname).ToListAsync();
+			var result = await _context.employees.OrderBy(d => d.dateOfBirth).OrderBy(s => s.surname).ToListAsync();
+			return result;
 		}
 
 		// GET: /Employees/{}
