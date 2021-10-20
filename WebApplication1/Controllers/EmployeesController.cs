@@ -25,7 +25,7 @@ namespace EmployeesAPI.Controllers
 			return await _context.employees.OrderBy(d => d.dateOfBirth).OrderBy(s => s.surname).ToListAsync();
 		}
 
-		// GET: /Employees/{id}
+		// GET: /Employees/{}
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Employee>> GetEmployee(int id)
 		{
@@ -41,7 +41,7 @@ namespace EmployeesAPI.Controllers
 
 		// PUT: /Employees/Update/{id}
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPut("/Update/{id}")]
+		[HttpPut("Update/{id}")]
 		public async Task<IActionResult> PutEmployee(int id, Employee employee)
 		{
 			if (id != employee.id)
@@ -72,7 +72,7 @@ namespace EmployeesAPI.Controllers
 
 		// POST: /Employees/Create
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPost("/Create")]
+		[HttpPost("Create")]
 		public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
 		{
 			_context.employees.Add(employee);
@@ -82,7 +82,7 @@ namespace EmployeesAPI.Controllers
 		}
 
 		// DELETE: /Employees/Delete/{id}
-		[HttpDelete("/Delete/{id}")]
+		[HttpDelete("Delete/{id}")]
 		public async Task<IActionResult> DeleteEmployee(int id)
 		{
 			var employee = await _context.employees.FindAsync(id);
