@@ -5,14 +5,17 @@ namespace EmployeesAPI
 {
 	public class Program
 	{
-		public static void Main(string[] args)
+        /// <summary>Defines the entry point of the application.</summary>
+        /// <param name="args">The arguments.</param>
+        public static void Main(string[] args)
 		{
-
-
 			CreateHostBuilder(args).Build().Run();
 		}
 
-		public static IHostBuilder CreateHostBuilder(string[] args) =>
+        /// <summary>Creates the host builder.</summary>
+        /// <param name="args">The arguments.</param>
+        /// <returns>A program initialization abstraction.</returns>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
 			Host.CreateDefaultBuilder(args)
 				.ConfigureWebHostDefaults(webBuilder =>
 				{

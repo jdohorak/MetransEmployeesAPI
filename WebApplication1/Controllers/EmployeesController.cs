@@ -7,27 +7,33 @@ using EmployeesAPI.Models;
 
 namespace EmployeesAPI.Controllers
 {
-	[Route("[controller]")]
+    /// <summary>Employees Controller</summary>
+    [Route("[controller]")]
 	[ApiController]
 	public class EmployeesController : ControllerBase
 	{
 		private readonly Employees _context;
 
-		public EmployeesController(Employees context)
+        /// <summary>Initializes a new instance of the <see cref="EmployeesController" /> class.</summary>
+        /// <param name="context">The context.</param>
+        public EmployeesController(Employees context)
 		{
 			_context = context;
 		}
 
-		// GET: /Employees
-		[HttpGet]
+        /// <summary>GET: /Employees</summary>
+        /// <returns>Employees lilst</returns>
+        [HttpGet]
 		public async Task<ActionResult<IEnumerable<Employee>>> Getemployees()
 		{
 			var result = await _context.employees.OrderBy(d => d.dateOfBirth).OrderBy(s => s.surname).ToListAsync();
 			return result;
 		}
 
-		// GET: /Employees/{}
-		[HttpGet("{id}")]
+        /// <summary>GET: /Employees/id</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Employee</returns>
+        [HttpGet("{id}")]
 		public async Task<ActionResult<Employee>> GetEmployee(int id)
 		{
 			var employee = await _context.employees.FindAsync(id);
@@ -40,9 +46,11 @@ namespace EmployeesAPI.Controllers
 			return employee;
 		}
 
-		// PUT: /Employees/Update/{id}
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPut("Update/{id}")]
+        /// <summary>PUT: /Employees/Update/id</summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="employee">The employee.</param>
+        /// <returns>HTTPs result</returns>
+        [HttpPut("Update/{id}")]
 		public async Task<IActionResult> PutEmployee(int id, Employee employee)
 		{
 			if (id != employee.id)
@@ -71,9 +79,10 @@ namespace EmployeesAPI.Controllers
 			return NoContent();
 		}
 
-		// POST: /Employees/Create
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPost("Create")]
+        /// <summary>POST: /Employees/Create</summary>
+        /// <param name="employee">The employee.</param>
+        /// <returns>HTTPs result</returns>
+        [HttpPost("Create")]
 		public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
 		{
 			_context.employees.Add(employee);
@@ -82,8 +91,10 @@ namespace EmployeesAPI.Controllers
 			return CreatedAtAction("GetEmployee", new { id = employee.id }, employee);
 		}
 
-		// DELETE: /Employees/Delete/{id}
-		[HttpDelete("Delete/{id}")]
+        /// <summary>//DELETE: //Employees/Delete/id</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>HTTPs result</returns>
+        [HttpDelete("Delete/{id}")]
 		public async Task<IActionResult> DeleteEmployee(int id)
 		{
 			var employee = await _context.employees.FindAsync(id);
