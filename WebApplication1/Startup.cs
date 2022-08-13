@@ -11,7 +11,8 @@ using Microsoft.Data.SqlClient;
 
 namespace EmployeesAPI
 {
-	public class Startup
+    /// <summary>Startup</summary>
+    public class Startup
 	{
 
 		private string connectionString;
@@ -39,8 +40,10 @@ namespace EmployeesAPI
 
 		public IConfiguration Configuration { get; }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
-		public void ConfigureServices(IServiceCollection services)
+
+        /// <summary>Configures the services.</summary>
+        /// <param name="services">The services.</param>
+        public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<Employees>(db => db.UseInMemoryDatabase("Employees"));
 			SqlConnection conn = new SqlConnection();
@@ -60,8 +63,10 @@ namespace EmployeesAPI
 			});
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        /// <summary>Configures the specified application.</summary>
+        /// <param name="app">The application.</param>
+        /// <param name="env">The env.</param>
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
 			{
