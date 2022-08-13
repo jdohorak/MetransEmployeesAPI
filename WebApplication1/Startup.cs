@@ -6,11 +6,32 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using EmployeesAPI.Models;
+using System;
+using Microsoft.Data.SqlClient;
 
 namespace EmployeesAPI
 {
 	public class Startup
 	{
+
+		private string connectionString;
+
+		public string ConnectionString
+		{
+			get
+			{
+				SqlConnectionStringBuilder connectionBuilder = new SqlConnectionStringBuilder();
+
+				connectionBuilder.DataSource = "dohorak\\mssqlserver01";
+				connectionBuilder.InitialCatalog = "dohorak";
+				connectionBuilder.IntegratedSecurity = true;
+				connectionString = connectionBuilder.ConnectionString;
+				return connectionString;
+			}
+			set { connectionString = value; }
+		}
+
+
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -22,6 +43,15 @@ namespace EmployeesAPI
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<Employees>(db => db.UseInMemoryDatabase("Employees"));
+			SqlConnection conn = new SqlConnection();
+			conn.ConnectionString = ConnectionString;
+
+			conn.Open();
+
+
+			conn.Close();
+			//services.AddDbContext<TableDB>(db2 => db2.UseSqlServer($"Data Source=dohorak\\mssqlserver01;Initial Catalog=dohorak;Integrated Security=True"));
+			services.AddDbContext<TableDB>(db2 => db2.UseSqlServer(ConnectionString));
 
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
